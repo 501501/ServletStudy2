@@ -38,7 +38,9 @@ public class BankBookController {
 			for(BankBookDTO bankBookDTO:bankBookDTOs) {
 				System.out.println(bankBookDTO.getBookName());
 			}
-			RequestDispatcher view = request.getRequestDispatcher("../WEB-INF/views/bankbook/bankbookSelect.jsp");
+			
+			request.setAttribute("list", bankBookDTOs);
+			RequestDispatcher view = request.getRequestDispatcher("../WEB-INF/views/bankbook/bankbookList.jsp");
 			try {
 				view.forward(request, response);
 			} catch (Exception e) {
@@ -56,6 +58,8 @@ public class BankBookController {
 			bankBookDTO.setBookNumber(num2);
 			bankBookDTO = bankBookDAO.getSelect(bankBookDTO);
 			System.out.println(bankBookDTO.getBookName());
+			
+			request.setAttribute("dto", bankBookDTO);
 			
 			RequestDispatcher view = request.getRequestDispatcher("../WEB-INF/views/bankbook/bankbookSelect.jsp");
 			try {
