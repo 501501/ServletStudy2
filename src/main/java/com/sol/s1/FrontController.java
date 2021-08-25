@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sol.s1.account.AccountController;
 import com.sol.s1.bankbook.BankBookController;
 import com.sol.s1.member.MemberController;
 
@@ -22,6 +23,7 @@ public class FrontController extends HttpServlet {
     
 	private MemberController memberController;
 	private BankBookController bankBookController;
+	private AccountController accountController;
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -31,6 +33,7 @@ public class FrontController extends HttpServlet {
         // TODO Auto-generated constructor stub
         memberController = new MemberController();
         bankBookController = new BankBookController();
+        accountController = new AccountController();
     }
 
 	/**
@@ -57,10 +60,18 @@ public class FrontController extends HttpServlet {
 		String path = uri.substring(startIndex, lastIndex);
 		
 		if (path.equals("/member")) {
-			memberController.start(request);
+			try {
+				memberController.start(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else if (path.equals("/bankbook")) {
 			bankBookController.start(request, response);
-		} else {
+		} else if (path.equals("/account")) {
+			accountController.start(request, response);
+		}
+		else {
 			System.out.println("없는 URL");
 		}
 //		System.out.println("path: "+path);

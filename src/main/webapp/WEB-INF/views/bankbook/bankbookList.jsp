@@ -28,5 +28,7 @@
 		</tr>
 	<%}%>
 	</table>
+	
+	<a href="bankbookInsert.do">WRITE</a>
 </body>
 </html>

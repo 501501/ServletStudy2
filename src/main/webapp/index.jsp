@@ -20,5 +20,9 @@
 		<a href="./bankbook/bankbookInsert.do">Insert</a><br>
 		<a href="bankbook/bankbookSelect.do?bookNumber=5">Select</a>
 	</p>
+	<h3>Account</h3>
+	<p>
+		<a href="./account/accountList.do">List</a>
+	</p>
 </body>
 </html>

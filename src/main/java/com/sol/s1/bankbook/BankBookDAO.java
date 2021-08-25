@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.sol.s1.util.DBConnector;
 
 public class BankBookDAO {
@@ -14,6 +16,33 @@ public class BankBookDAO {
 	public BankBookDAO() {
 		dbConnector = new DBConnector();
 	}
+	
+	//setInsert
+	public int setInsert(BankBookDTO bankbookDTO) {
+		
+		Connection con = dbConnector.getConnect();
+		PreparedStatement st = null;
+		int result = 0;
+		
+		//디비에서 bankbook_seq -> bankbook_sqe 오타
+		String sql = "INSERT INTO BANKBOOK (bookNumber, bookName, bookRate, bookSale) "
+				+ "VALUES (bankbook_sqe.nextval, ?, ?, ?)";
+		try {
+			st = con.prepareStatement(sql);
+			st.setString(1, bankbookDTO.getBookName());
+			st.setDouble(2, bankbookDTO.getBookRate());
+			st.setInt(3, bankbookDTO.getBookSale());
+			
+			result = st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			dbConnector.disConnect(st, con);
+		}
+		return result;
+	}
+	
 	
 	//getList
 	public ArrayList<BankBookDTO> getList() {

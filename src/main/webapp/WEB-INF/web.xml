@@ -9,5 +9,6 @@
   	<servlet-name>front</servlet-name>
   	<url-pattern>/member/*</url-pattern>
   	<url-pattern>/bankbook/*</url-pattern>
+  	<url-pattern>/account/*</url-pattern>
   </servlet-mapping>
 </web-app>
