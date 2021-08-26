@@ -14,29 +14,22 @@ public class MemberDAO {
 	}
 	
 	// 회원가입 메서드 setInsert
-	public int memberJoin(MemberDTO memberDTO) {
+	public int memberJoin(MemberDTO memberDTO) throws Exception {
 		Connection con = dbConnector.getConnect();
 		PreparedStatement st = null;
 		int result = 0;
 		
 		String sql = "INSERT INTO MEMBER(id, pw, name, phone, email) VALUES (?, ?, ?, ?, ?)";
+		st = con.prepareStatement(sql);
+		st.setString(1, memberDTO.getId());
+		st.setString(2, memberDTO.getPw());
+		st.setString(3, memberDTO.getName());
+		st.setString(4, memberDTO.getPhone());
+		st.setString(5, memberDTO.getEmail());
+			
+		result = st.executeUpdate();
+		dbConnector.disConnect(st, con);
 		
-		try {
-			st = con.prepareStatement(sql);
-			st.setString(1, memberDTO.getId());
-			st.setString(2, memberDTO.getPw());
-			st.setString(3, memberDTO.getName());
-			st.setString(4, memberDTO.getPhone());
-			st.setString(5, memberDTO.getEmail());
-			
-			result = st.executeUpdate();
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			dbConnector.disConnect(st, con);
-		}
 		return result;
 	}
 }
