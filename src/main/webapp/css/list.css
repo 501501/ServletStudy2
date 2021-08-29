@@ -1,0 +1,15 @@
+@charset "UTF-8";
+.tbl {
+	border: black 3px solid;
+	border-spacing: 0px;
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+
+.tbl_td {
+	border: black 3px dotted;
+}
+
+title {
+	margin: 0 auto;
+}

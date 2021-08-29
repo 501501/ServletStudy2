@@ -10,23 +10,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link href="../css/list.css" rel="stylesheet">
 </head>
 <body>
 	<h1>BankBook List Page BY JSTL</h1>
 	
-	<table>
+	<table class="tbl">
 		<tr>
-			<th>일련번호</th><th>제품명</th><th>이자율</th><th>Status</th>
+			<th class="tbl_td">일련번호</th><th class="tbl_td">제품명</th><th class="tbl_td">이자율</th><th class="tbl_td">Status</th>
 		</tr>
 		
 		<c:forEach items="${list}" var="dto" varStatus="i">
-			<tr>
-				<td>${dto.bookNumber}</td>
-				<td><a href="./bankbookSelect.do?bookNumber=${dto.bookNumber}">${dto.bookName}</a></td>
-				<td>${dto.bookRate}</td>
-				<td>
+			<tr class="tbl_tr">
+				<td class="tbl_td">${dto.bookNumber}</td>
+				<td class="tbl_td"><a href="./bankbookSelect.do?bookNumber=${dto.bookNumber}">${dto.bookName}</a></td>
+				<td class="tbl_td">${dto.bookRate}</td>
+				<td class="tbl_td">
 					<p>현재 아이템: ${i.current}</p>
 					<p>인덱스 번호: ${i.index}</p>
 					<p>순서 번호: ${i.count}</p>
