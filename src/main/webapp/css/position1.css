@@ -1,0 +1,47 @@
+@charset "UTF-8";
+#d1 {
+	width: 100%;
+	height: 500px;
+	background-color: yellow;
+}
+
+.c1 {
+	width: 200px;
+	height: 100px;
+}
+
+.c1_1 {
+	background-color: red;
+	position: absolute;
+	top: 50px;
+	left: 100px;
+}
+
+.c1_2 {
+	background-color: gray;
+	position: relative;
+	right: 0px;
+	top: 50px;
+}
+
+.c1_3 {
+	background-color: blue;
+	position: fixed;
+	top: 150px;
+	left: 200px;
+}
+
+.c1_4 {
+	background-color: black;
+	position: relative;
+	top: 100px;
+	left: 200px;
+}
+
+.c2 {
+	width: 100px;
+	height: 50px;
+	background-color: white;
+	position: absolute;
+	top: 50px;
+}
